@@ -1,6 +1,45 @@
 
 
 
+1. Clone the code from GitHub 
+2. Run the app by python3 app.py - IF error build 
+3. Pytest - python3 -m pytest --cov
+4. 
+
+stage(‘deep’) {
+            steps {
+		sh “pip3 install flask flask_sqlAlchemy”
+                sh “git clone https://github.com/deep/qaProject.git”
+		sh “python3 app.py”
+            }
+        }
+stage(‘Roman’) {
+            steps {
+                sh “python3 -m pytest --cov”
+            }
+        }
+Stage(‘deployToVM’){
+	steps{
+	sh “docker service create --name nginx --publish 80:80 a:latest”
+	}
+}
+
+
+Video should show building of app, test coverage, 
+Docker push - Registry - a:latest
+{
+	
+}
+Test
+{
+	sh “python3 -m pytest --cov”
+}
+Deploy 
+
+
+
+
+
 My Laptop: Downloads - empty
 
 One-Drive / File share on Storage Account
